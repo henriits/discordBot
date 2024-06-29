@@ -6,8 +6,9 @@ export type Generated<T> =
         : ColumnType<T, T | undefined, T>;
 
 export interface Students {
-    studentId: Generated<number>;
-    userName: string;
+    id: Generated<number>;
+    name: string;
+    username: string;
 }
 
 export interface DB {

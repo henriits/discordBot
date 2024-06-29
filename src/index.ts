@@ -8,7 +8,7 @@ import createApp from './app';
 const { DISCORD_BOT_TOKEN } = process.env;
 const { DATABASE_URL } = process.env;
 
-const PORT = 3001;
+const PORT = 3002;
 
 if (!DISCORD_BOT_TOKEN) {
     throw new Error(
@@ -24,7 +24,7 @@ if (!DATABASE_URL) {
 
 const discordBot = createDiscordBot(DISCORD_BOT_TOKEN);
 const database = createDatabase(DATABASE_URL);
-const app = createApp();
+const app = createApp(database);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port http:localhost:${PORT}`);
