@@ -12,6 +12,13 @@ export default (db: Database) => ({
     findAll(): Promise<RowSelect[]> {
         return db.selectFrom(TABLE).select(keys).execute();
     },
+    findById(id: number): Promise<RowSelect | undefined> {
+        return db
+            .selectFrom(TABLE)
+            .select(keys)
+            .where('id', '=', id)
+            .executeTakeFirst();
+    },
     addStudent(record: RowInsert): Promise<RowSelect | undefined> {
         return db
             .insertInto(TABLE)

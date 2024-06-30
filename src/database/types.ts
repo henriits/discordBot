@@ -5,6 +5,12 @@ export type Generated<T> =
         ? ColumnType<S, I | undefined, U>
         : ColumnType<T, T | undefined, T>;
 
+export interface Sprints {
+    id: Generated<number>;
+    sprintDescription: string;
+    sprintName: string;
+}
+
 export interface Students {
     id: Generated<number>;
     name: string;
@@ -12,5 +18,6 @@ export interface Students {
 }
 
 export interface DB {
+    sprints: Sprints;
     students: Students;
 }
