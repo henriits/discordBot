@@ -5,7 +5,7 @@ import type { MessageTemplates } from '@/database';
 export const templatesFactory = (
     overrides: Partial<Insertable<MessageTemplates>> = {}
 ): Insertable<MessageTemplates> => ({
-    text: 'Great job! Congratulations!!!!',
+    text: 'Great job! Congratulations!!!',
     ...overrides,
 });
 
