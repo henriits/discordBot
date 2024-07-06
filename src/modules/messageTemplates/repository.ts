@@ -1,4 +1,4 @@
-import { Insertable, Updateable, Selectable } from 'kysely';
+import { Insertable, Updateable, Selectable, sql } from 'kysely';
 import { Database, MessageTemplates } from '@/database';
 import { keys } from './schema';
 
@@ -44,6 +44,14 @@ export default (db: Database) => ({
             .deleteFrom(TABLE)
             .where('id', '=', id)
             .returning(keys)
+            .executeTakeFirst();
+    },
+    findRandomId(): Promise<{ id: number } | undefined> {
+        return db
+            .selectFrom(TABLE)
+            .select(['id'])
+            .orderBy(sql`random()`)
+            .limit(1)
             .executeTakeFirst();
     },
 });
