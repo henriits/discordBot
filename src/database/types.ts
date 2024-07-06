@@ -5,6 +5,14 @@ export type Generated<T> =
         ? ColumnType<S, I | undefined, U>
         : ColumnType<T, T | undefined, T>;
 
+export interface DiscordMessages {
+    sprintId: number;
+    studentId: number;
+    templateId: number;
+    timestamp: Generated<string>;
+    url: string;
+}
+
 export interface MessageTemplates {
     id: Generated<number>;
     text: string;
@@ -23,6 +31,7 @@ export interface Students {
 }
 
 export interface DB {
+    discordMessages: DiscordMessages;
     messageTemplates: MessageTemplates;
     sprints: Sprints;
     students: Students;
