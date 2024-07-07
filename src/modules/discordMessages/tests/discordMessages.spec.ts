@@ -24,7 +24,7 @@ afterEach(async () => {
 describe('POST', () => {
     it('should post the message of accomplishment for a specific student', async () => {
         await supertest(app)
-            .post('/congratulate')
+            .post('/messages')
             .send({
                 studentId: 1,
                 sprintId: 1,
@@ -43,7 +43,7 @@ describe('GET', () => {
             templateId: 1,
             url: 'http//:example.com',
         });
-        const { body } = await supertest(app).get('/congratulate').expect(200);
+        const { body } = await supertest(app).get('/messages').expect(200);
         expect(body).toHaveLength(1);
         expect(body).toEqual([
             {
@@ -58,7 +58,7 @@ describe('GET', () => {
 
     it('should return an empty array of all congratulatory messages for a user that does not exist', async () => {
         const response = await supertest(app)
-            .get('/congratulate')
+            .get('/messages')
             .query({ username: 'nobody' });
 
         console.log(response.status);
@@ -72,7 +72,7 @@ describe('GET', () => {
             url: 'http//:example.com',
         });
         const { body } = await supertest(app)
-            .get('/congratulate')
+            .get('/messages')
             .query({ username: 'jsnow' });
         expect(body).toHaveLength(1);
         expect(body).toEqual([
