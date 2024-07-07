@@ -18,7 +18,7 @@ afterEach(async () => {
 
 describe('GET', () => {
     it('should return an empty array of message templates when there are no messages', async () => {
-        const { body } = await supertest(app).get('/messages').expect(200);
+        const { body } = await supertest(app).get('/templates').expect(200);
         expect(body).toHaveLength(0);
     });
     it('should return a list of message templates', async () => {
@@ -29,7 +29,7 @@ describe('GET', () => {
             }),
         ]);
 
-        const { body } = await supertest(app).get('/messages').expect(200);
+        const { body } = await supertest(app).get('/templates').expect(200);
 
         expect(body).toEqual([
             templatesMatcher(),
@@ -42,7 +42,7 @@ describe('GET', () => {
 
 describe('GET/:id', () => {
     it('should return 404 if the message is not found', async () => {
-        const { body } = await supertest(app).get('/messages/999').expect(404);
+        const { body } = await supertest(app).get('/templates/999').expect(404);
         expect(body.error.message).toMatch('Message not found');
     });
 
@@ -52,7 +52,9 @@ describe('GET/:id', () => {
                 id: 1234,
             }),
         ]);
-        const { body } = await supertest(app).get('/messages/1234').expect(200);
+        const { body } = await supertest(app)
+            .get('/templates/1234')
+            .expect(200);
         expect(body).toEqual(templatesMatcher({ id: 1234 }));
     });
 });
@@ -60,7 +62,7 @@ describe('GET/:id', () => {
 describe('POST', () => {
     it('should return 201 and create a message', async () => {
         const { body } = await supertest(app)
-            .post('/messages')
+            .post('/templates')
             .send(
                 templatesFactory({
                     text: 'Good job',
@@ -74,7 +76,7 @@ describe('POST', () => {
 
 describe('PATCH', () => {
     it('should return 404 if the message is not found', async () => {
-        const { body } = await supertest(app).get('/messages/999').expect(404);
+        const { body } = await supertest(app).get('/templates/999').expect(404);
         expect(body.error.message).toMatch('Message not found');
     });
 
@@ -82,11 +84,11 @@ describe('PATCH', () => {
         const id = 888;
         await createTemplates([templatesFactory({ id })]);
         await supertest(app)
-            .patch(`/messages/${id}`)
+            .patch(`/templates/${id}`)
             .send({ text: 'Updated text!' })
             .expect(200);
 
-        const { body } = await supertest(app).get('/messages/888').expect(200);
+        const { body } = await supertest(app).get('/templates/888').expect(200);
         expect(body).toEqual(templatesMatcher({ id, text: 'Updated text!' }));
     });
 });
@@ -95,11 +97,11 @@ describe('DELETE', () => {
     it('it delete the sprint by provided id', async () => {
         const id = 1234;
         await createTemplates([templatesFactory({ id })]);
-        await supertest(app).delete('/messages/1234').expect(200);
+        await supertest(app).delete('/templates/1234').expect(200);
     });
     it('returns 404 if sprint is not found', async () => {
         const id = 1234;
         await createTemplates([templatesFactory({ id })]);
-        await supertest(app).delete('/messages/999').expect(404);
+        await supertest(app).delete('/templates/999').expect(404);
     });
 });

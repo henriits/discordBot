@@ -13,8 +13,8 @@ export default function createApp(db: Database, bot?: Client) {
     app.use(express.json());
     app.use('/students', createStudentsController(db));
     app.use('/sprints', createSprintsController(db));
-    app.use('/messages', createMessagesController(db));
-    app.use('/congratulate', bot ? messages(db, bot) : messages(db));
+    app.use('/templates', createMessagesController(db));
+    app.use('/messages', bot ? messages(db, bot) : messages(db));
     app.use(jsonErrorHandler);
     return app;
 }

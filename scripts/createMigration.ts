@@ -1,3 +1,4 @@
+// npm run create-migration -- migrationFileName
 import * as fs from 'fs';
 import * as path from 'path';
 
