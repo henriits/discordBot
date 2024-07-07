@@ -5,7 +5,7 @@ import { Client } from 'discord.js';
 import type { Database } from '@/database';
 import { jsonRoute, unsupportedRoute } from '@/utils/middleware';
 import buildRepository from './repository';
-import { createChannel } from '@/utils/createChannel';
+import { createChannel } from '@/discord/createChannel';
 import sendMessage from '@/discord/sendMessage';
 import * as schema from './schema';
 import fetchGif from '@/utils/fetchGif';
