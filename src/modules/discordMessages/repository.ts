@@ -25,6 +25,7 @@ export default (db: Database) => ({
             .innerJoin('sprints', 'sprintId', 'sprints.id')
             .select([
                 'discordMessages.url',
+                'students.name',
                 'students.username',
                 'sprints.sprintName',
                 'sprints.sprintDescription',

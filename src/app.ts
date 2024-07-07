@@ -4,7 +4,7 @@ import jsonErrorHandler from './middleware/jsonErrors';
 import createStudentsController from './modules/students/controller';
 import createSprintsController from './modules/sprints/controller';
 import createMessagesController from './modules/messageTemplates/controller';
-import createDiscordMessageController from './modules/discordMessages/controller';
+import messages from './modules/discordMessages/controller';
 
 import { type Database } from './database';
 
@@ -14,12 +14,7 @@ export default function createApp(db: Database, bot?: Client) {
     app.use('/students', createStudentsController(db));
     app.use('/sprints', createSprintsController(db));
     app.use('/messages', createMessagesController(db));
-    app.use(
-        '/congratulate',
-        bot
-            ? createDiscordMessageController(db, bot)
-            : createDiscordMessageController(db)
-    );
+    app.use('/congratulate', bot ? messages(db, bot) : messages(db));
     app.use(jsonErrorHandler);
     return app;
 }

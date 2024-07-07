@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import 'dotenv/config';
-import createDiscordBot from './discordBot';
+import createDiscordBot from './discord/discordBot';
 import createDatabase from './database';
 import createApp from './app';
 
-const { DISCORD_BOT_TOKEN } = process.env;
-const { DATABASE_URL } = process.env;
+const { DISCORD_BOT_TOKEN, DATABASE_URL, DISCORD_CHANNEL_ID } = process.env;
 
 const PORT = 3002;
 
@@ -22,10 +19,16 @@ if (!DATABASE_URL) {
     );
 }
 
+if (!DISCORD_CHANNEL_ID) {
+    throw new Error(
+        'DISCORD_CHANNEL_ID is not defined in the environment variables.'
+    );
+}
+
 const discordBot = createDiscordBot(DISCORD_BOT_TOKEN);
 const database = createDatabase(DATABASE_URL);
-const app = createApp(database);
+const app = createApp(database, discordBot);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port http:localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

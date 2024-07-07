@@ -6,7 +6,7 @@ import type { Database } from '@/database';
 import { jsonRoute, unsupportedRoute } from '@/utils/middleware';
 import buildRepository from './repository';
 import { createChannel } from '@/utils/createChannel';
-import sendMessage from '@/utils/sendEmbed';
+import sendMessage from '@/discord/sendMessage';
 import * as schema from './schema';
 import fetchGif from '@/utils/fetchGif';
 import buildTemplateRepository from '../messageTemplates/repository';

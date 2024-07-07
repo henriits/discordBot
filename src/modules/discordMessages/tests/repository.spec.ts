@@ -44,6 +44,7 @@ describe('create', () => {
                 sprintDescription:
                     'First Steps Into Programming with Python: Project',
                 username: 'jsnow',
+                name: 'Jon Snow',
                 url: 'http//:example.com',
             },
         ]);
@@ -61,6 +62,7 @@ describe('getPostInfo', () => {
                 sprintDescription:
                     'First Steps Into Programming with Python: Project',
                 username: 'jsnow',
+                name: 'Jon Snow',
                 url: 'http//:example.com',
             },
         ]);
