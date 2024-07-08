@@ -4,6 +4,7 @@ import type { Database } from '@/database';
 import { jsonRoute } from '@/utils/middleware';
 import buildRepository from './repository';
 import MessageNotFound from '@/utils/errors/moduleErrors/messageNotFound';
+import MethodNotAllowed from '@/utils/errors/MethodNotAllowed';
 import * as schema from './schema';
 
 export default (db: Database) => {
@@ -18,7 +19,7 @@ export default (db: Database) => {
         })
     );
     router.get(
-        '/:id',
+        '/:id(\\d+)',
         jsonRoute(async (req) => {
             const id = schema.parseId(req.params.id);
             const record = await templates.findById(id);
@@ -59,5 +60,10 @@ export default (db: Database) => {
             return record;
         })
     );
+
+    // Middleware to handle unsupported methods
+    router.use((req, res, next) => {
+        next(new MethodNotAllowed());
+    });
     return router;
 };

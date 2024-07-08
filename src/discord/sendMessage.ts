@@ -1,6 +1,6 @@
 import { TextChannel, EmbedBuilder, Channel } from 'discord.js';
 
-type Record = {
+export type Record = {
     name: string;
     username: string;
     sprintName: string;
@@ -34,7 +34,7 @@ export default async function sendMessage(
     }
 }
 
-function formatTheMessage(records: Record[]) {
+export function formatTheMessage(records: Record[]) {
     const formattedMessages = records.map(
         (record) =>
             `@${record.username} has just completed ${record.sprintName}! ${record.sprintDescription}\n${record.text}`

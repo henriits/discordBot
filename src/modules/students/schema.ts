@@ -4,7 +4,7 @@ import { Students } from '@/database';
 type Student = Students;
 const schema = z.object({
     id: z.coerce.number().int().positive(),
-    name: z.string().min(5).max(100),
+    name: z.string().min(1).max(100),
     username: z.string().min(1).max(15).toLowerCase(),
 });
 

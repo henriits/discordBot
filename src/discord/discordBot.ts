@@ -13,17 +13,6 @@ export default function createBot(discordBotToken: string) {
         console.log(`${c.user.tag}  is ready`);
     });
 
-    client.on('messageCreate', (msg) => {
-        console.log(msg.content);
-        if (msg.author.bot) {
-            return; // if bot is message author, return dont reply
-        }
-        if (msg.content === 'hello') {
-            msg.reply('Hey there!');
-            msg.react('❤️');
-        }
-    });
-
     client.login(discordBotToken);
 
     return client;
