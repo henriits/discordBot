@@ -39,12 +39,23 @@ export default (db: Database) => ({
             .returning(keys)
             .executeTakeFirst();
     },
-    remove(id: number) {
+    async remove(id: number) {
+        // Had to remove from messages, to allow message deletion
+        await db
+            .deleteFrom('discordMessages')
+            .where('templateId', '=', id)
+            .execute();
+
+        console.log(`Attempting to remove template with id: ${id}`);
         return db
             .deleteFrom(TABLE)
             .where('id', '=', id)
             .returning(keys)
-            .executeTakeFirst();
+            .executeTakeFirst()
+            .then((result) => {
+                console.log('Delete result:', result);
+                return result;
+            });
     },
     findRandomId(): Promise<{ id: number } | undefined> {
         return db

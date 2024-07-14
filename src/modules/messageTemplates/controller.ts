@@ -37,7 +37,7 @@ export default (db: Database) => {
         }, StatusCodes.CREATED)
     );
     router.patch(
-        '/:id',
+        '/:id(\\d+)',
         jsonRoute(async (req) => {
             const id = schema.parseId(req.params.id);
             const bodyPatch = schema.parseUpdatable(req.body);
