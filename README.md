@@ -1,33 +1,104 @@
+## Installation
+
+1. Clone the repository
+
+2. Navigate to the project directory
+
+```bash
+cd project
+```
+
+3. Install dependencies
+
+```bash
+npm install
+```
+
 ## Setup
 
-**Note:** For this exercise, we have provided an `.env` file with the database connection string. Normally, you would not commit this file to version control. We are doing it here for simplicity and given that we are using a local SQLite database.
+1. Create .env file with the followings:
 
-## Migrations
+```bash
+DATABASE_URL=./data/database.db
+DISCORD_BOT_TOKEN=""
+GIPHY_API=""
+DISCORD_CHANNEL_ID=""
+```
 
-Before running the migrations, we need to create a database. We can do this by running the following command:
+# Migrations
+
+Run Migrations:
 
 ```bash
 npm run migrate:latest
 ```
 
-## Running the server
+Update types:
 
-In development mode:
+```bash
+npm run gen:types
+```
+
+## Usage
+
+1. Start the app
 
 ```bash
 npm run dev
 ```
 
-In production mode:
+## Creating new migration files
 
 ```bash
-npm run start
+npm run create-migration -- fileNameProvidedByYou
 ```
 
-## Updating types
-
-If you make changes to the database schema, you will need to update the types. You can do this by running the following command:
+## Running tests
 
 ```bash
-npm run gen:types
+npm run test
+```
+
+## Running test coverage
+
+```bash
+npm run coverage
+```
+
+POST
+http://localhost:3002/students
+
+```bash
+{
+"name": "silly",
+"username": "johdn_doe"
+}
+```
+
+http://localhost:3002/sprints
+
+```bash
+{
+"sprintName": "WD-1.1",
+"sprintDescription": "Starting with python"
+}
+```
+
+http://localhost:3002/templates
+
+```bash
+{
+"text": "you did it"
+}
+```
+
+http://localhost:3002/messages ( was congratulate before )
+
+```bash
+{
+
+      "studentId": 1,
+      "sprintId": 1
+
+}
 ```
