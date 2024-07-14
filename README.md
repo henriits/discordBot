@@ -77,7 +77,7 @@ npm run coverage
 
 -   **Method:** POST
 -   **URL:** `http://localhost:3002/students`
-    **Body:**
+-   **Body:**
 
 ```json
 {
@@ -108,7 +108,7 @@ npm run coverage
 -   **Method:** PATCH
 -   **URL:** `http://localhost:3002/students/:id`
 -   **Example** `http://localhost:3002/students/1`
-    **Body:**
+-   **Body:**
 
 ```json
 {
@@ -133,7 +133,7 @@ npm run coverage
 
 -   **Method:** POST
 -   **URL:** `http://localhost:3002/sprints`
-    **Body:**
+-   **Body:**
 
 ```json
 {
@@ -164,7 +164,7 @@ npm run coverage
 -   **Method:** PATCH
 -   **URL:** `http://localhost:3002/sprints/:id`
 -   **Example** `http://localhost:3002/sprints/1`
-    **Body:**
+-   **Body:**
 
 ```json
 {
@@ -189,7 +189,7 @@ npm run coverage
 
 -   **Method:** POST
 -   **URL:** `http://localhost:3002/templates`
-    **Body:**
+-   **Body:**
 
 ```json
 {
@@ -219,7 +219,7 @@ npm run coverage
 -   **Method:** PATCH
 -   **URL:** `http://localhost:3002/templates/:id`
 -   **Example** `http://localhost:3002/templates/1`
-    **Body:**
+-   **Body:**
 
 ```json
 {
@@ -232,8 +232,8 @@ npm run coverage
 **Request:**
 
 -   **Method:** DELETE
--   **URL:** `http://localhost:3002/students/:id`
--   **Example** `http://localhost:3002/students/1`
+-   **URL:** `http://localhost:3002/templates/:id`
+-   **Example** `http://localhost:3002/templates/1`
 
 ### Messages
 
@@ -243,7 +243,7 @@ npm run coverage
 
 -   **Method:** POST
 -   **URL:** `http://localhost:3002/messages`
-    **Body:**
+-   **Body:**
 
 ```json
 {
