@@ -1,15 +1,8 @@
 import { vi, describe, it, expect } from 'vitest';
 import sendMessage, { formatTheMessage } from '../sendMessage';
 
-vi.mock('discord.js', () => ({
-    ...vi.importActual('discord.js'),
-    TextChannel: vi.fn().mockImplementation(() => ({
-        send: vi.fn(),
-    })),
-}));
-
 describe('sendMessage', () => {
-    it('should warn if an invalid channel is provided', async () => {
+    it('should warn for an invalid channel', async () => {
         console.warn = vi.fn();
 
         await sendMessage(undefined, []);
@@ -21,8 +14,8 @@ describe('sendMessage', () => {
 });
 
 describe('formatTheMessage', () => {
-    it('should format the messages correctly', () => {
-        const mockRecords = [
+    it('should format messages correctly', () => {
+        const records = [
             {
                 name: 'User1',
                 username: 'user1',
@@ -41,7 +34,7 @@ describe('formatTheMessage', () => {
             },
         ];
 
-        const formattedMessage = formatTheMessage(mockRecords);
+        const formattedMessage = formatTheMessage(records);
 
         expect(formattedMessage).toBe(
             '@user1 has just completed Sprint A! Description for Sprint A\nUser1 completed Sprint A.\n\n' +
