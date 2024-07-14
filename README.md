@@ -252,7 +252,7 @@ npm run coverage
 }
 ```
 
-#### Get All Templates
+#### Get All Messages
 
 **Request:**
 
