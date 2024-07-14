@@ -65,40 +65,196 @@ npm run test
 npm run coverage
 ```
 
-POST
-http://localhost:3002/students
+# API Documentation
 
-```bash
+## Usage with Insomnia
+
+### Students
+
+#### Create Student
+
+**Request:**
+
+-   **Method:** POST
+-   **URL:** `http://localhost:3002/students`
+    **Body:**
+
+```json
 {
-"name": "silly",
-"username": "johdn_doe"
+    "name": "silly",
+    "username": "john_doe"
 }
 ```
 
-http://localhost:3002/sprints
+#### Get All Students
 
-```bash
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/students`
+
+#### Get Student by ID
+
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/students/:id`
+-   **Example** `http://localhost:3002/students/1`
+
+#### Update student
+
+**Request:**
+
+-   **Method:** PATCH
+-   **URL:** `http://localhost:3002/students/:id`
+-   **Example** `http://localhost:3002/students/1`
+    **Body:**
+
+```json
 {
-"sprintName": "WD-1.1",
-"sprintDescription": "Starting with python"
+    "name": "new name",
+    "username": "new_username"
 }
 ```
 
-http://localhost:3002/templates
+#### Delete student
 
-```bash
+**Request:**
+
+-   **Method:** DELETE
+-   **URL:** `http://localhost:3002/students/:id`
+-   **Example** `http://localhost:3002/students/1`
+
+### Sprints
+
+#### Create sprints
+
+**Request:**
+
+-   **Method:** POST
+-   **URL:** `http://localhost:3002/sprints`
+    **Body:**
+
+```json
 {
-"text": "you did it"
+    "sprintName": "WD-1.1",
+    "sprintDescription": "Starting with python"
 }
 ```
 
-http://localhost:3002/messages ( was congratulate before )
+#### Get All sprints
 
-```bash
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/sprints`
+
+#### Get sprint by ID
+
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/sprints/:id`
+-   **Example** `http://localhost:3002/sprints/1`
+
+#### Update sprint
+
+**Request:**
+
+-   **Method:** PATCH
+-   **URL:** `http://localhost:3002/sprints/:id`
+-   **Example** `http://localhost:3002/sprints/1`
+    **Body:**
+
+```json
 {
-
-      "studentId": 1,
-      "sprintId": 1
-
+    "sprintName": "new name here",
+    "sprintDescription": "new description here"
 }
 ```
+
+#### Delete sprint
+
+**Request:**
+
+-   **Method:** DELETE
+-   **URL:** `http://localhost:3002/sprint/:id`
+-   **Example** `http://localhost:3002/sprint/1`
+
+### Templates
+
+#### Create template
+
+**Request:**
+
+-   **Method:** POST
+-   **URL:** `http://localhost:3002/templates`
+    **Body:**
+
+```json
+{
+    "text": "template text goes here"
+}
+```
+
+#### Get All Templates
+
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/templates`
+
+#### Get template by ID
+
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/templates/:id`
+-   **Example** `http://localhost:3002/students/1`
+
+#### Update template
+
+**Request:**
+
+-   **Method:** PATCH
+-   **URL:** `http://localhost:3002/templates/:id`
+-   **Example** `http://localhost:3002/templates/1`
+    **Body:**
+
+```json
+{
+    "text": "new template text goes here"
+}
+```
+
+#### Delete template
+
+**Request:**
+
+-   **Method:** DELETE
+-   **URL:** `http://localhost:3002/students/:id`
+-   **Example** `http://localhost:3002/students/1`
+
+### Messages
+
+#### Create Message
+
+**Request:**
+
+-   **Method:** POST
+-   **URL:** `http://localhost:3002/messages`
+    **Body:**
+
+```json
+{
+    "studentId": 1,
+    "sprintId": 1
+}
+```
+
+#### Get All Templates
+
+**Request:**
+
+-   **Method:** GET
+-   **URL:** `http://localhost:3002/templates`
