@@ -67,7 +67,7 @@ npm run coverage
 
 # API Documentation
 
-## Usage with Insomnia
+## Usage with Insomnia / Postman ( Api testing platform )
 
 ### Students
 
